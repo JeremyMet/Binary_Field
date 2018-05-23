@@ -63,4 +63,19 @@ Numerous examples are given in the "main body" and should demonstrate to the use
 ## Berlekamp Algorithm
 
 This class includes tool to factorize binary polynomials (i.e. whose coefficients belong to __GF(2)__).
-Actually, only one method should be called (namely *Berlekamp.Factorize*) as the others could be considered as "private" (see the main body for example). This class relies on the Berlekamp algorithm which mainly transforms the factorization problem into a linear algebra one.
+Actually, only one method should be called (namely *Berlekamp.Factorize*) as the others could be considered as "private" (see the main body for example). This class relies on the Berlekamp algorithm which mainly transforms the factorization problem into a linear algebra one (i.e. finding the kernel of a linear application). An example of the Factorisation method usage is given below.
+
+```python
+print("Factorization with the Berlekamp Algorithm .")
+GF2.set_polynomial(0) ;
+a = GF2("x^3+x+1") ;
+b = GF2("x^4+x+1") ;
+c = GF2("x^5+x^2+1") ;
+d = a*a*a*b*b*c ;
+d = d**129 ;
+print("d: " + str(d));
+prod = Berlekamp.Factorize(d) ;
+print(" Factorisation ...") ;
+for k, v in prod.items():
+print("(key: "+str(GF2(k))+", pow: "+str(v)+")") ;
+```
