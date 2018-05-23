@@ -1,5 +1,11 @@
 # Binary_Field
 
+The project includes several classes
+1. GF2 : Allows to perform polynomial/finite field arithmetics in characteristic 2.
+2. Binary_Matrix : Allows to perform matrix arithmetic in characteristic 2.
+3. Berlekamp : Allows to factorize binary polynomial thanks to the Berlekamp algorithm.
+
+
 ## GF2 Class
 
 The class can be used to perform arithmetic over any binary field.
@@ -79,3 +85,7 @@ print(" Factorisation ...") ;
 for k, v in prod.items():
   print("(key: "+str(GF2(k))+", pow: "+str(v)+")") ;
 ```
+
+## Note
+
+The code has not been extensively tested so bugs may remain. If you meet any, don't hesite to contact me. 
