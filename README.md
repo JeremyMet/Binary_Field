@@ -61,7 +61,7 @@ Id = M2*M_inv ;
 ```
 is equal to the identity matrix indeed. The identity matrix can be instantiated thanks to the class method *Binary_matrix.eye(n)* where n is the dimension of the identity matrix (i.e. square matrix with n^2 elements). The zero matrix can be created as well through the *Binary_matrix.zero(m,n)* method which spans a (m,n) matrix filled up with 0.
 
-Kernel of a matrix can be computed with the class method *Binary_matrix.ker* which returns a matrix whose rows are those which span the ker seen as a vectorial space.
+Kernel of a matrix can be computed with the class method *Binary_matrix.ker* which returns a matrix whose rows are those which span the ker seen as a vector space.
 
 Note the code is not fully optimized as some code parts are run several times while results could have been stored. Nonetheless, this code is still very usable and somehow easy to understand.
 
