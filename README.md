@@ -28,6 +28,7 @@ c = a*b ; # (x+1)*(x^2) mod (x^3+x+1) = (x^3+x^2) mod (x^3+x+1) = x^2+x+1
 should provide the correct output.
 
 Moreover, setting the __F__ to 0 allows the user to perform calculations over the polynomial ring (mod 2).
+Note the constructor should be provided "expanded form" of polynomial since there is no algorithm to carry out more complex input (for instance, *GF2("(x+1)*(x+1)")* is not allows, one should first define *A=GF2("x+1")* and compute *A\*A*).
 
 Numerous examples are given in the "main body" and should show the user how to handle the class functionalities.
 
