@@ -86,6 +86,13 @@ print(" Factorisation ...") ;
 for k, v in prod.items():
   print("(key: "+str(GF2(k))+", pow: "+str(v)+")") ;
 ```
+## Setup
+
+Copy the source files into your project folder and import the desired classes. For instance,
+```python
+from GF2 import GF2
+```
+
 
 ## Note
 
