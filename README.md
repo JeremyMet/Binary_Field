@@ -77,5 +77,5 @@ print("d: " + str(d));
 prod = Berlekamp.Factorize(d) ;
 print(" Factorisation ...") ;
 for k, v in prod.items():
-print("(key: "+str(GF2(k))+", pow: "+str(v)+")") ;
+  print("(key: "+str(GF2(k))+", pow: "+str(v)+")") ;
 ```
