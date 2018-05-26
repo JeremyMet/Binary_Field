@@ -88,6 +88,18 @@ print(" Factorisation ...") ;
 for k, v in prod.items():
   print("(key: "+str(GF2(k))+", pow: "+str(v)+")") ;
 ```
+## Mastrovito Class
+
+For now, this class allows to generate a *.vhd* which corresponds to the Mastrovito Matrix structure one would generate for its circuit design. This matrix is used to perform a finite field multiplication in one clock cycle (i.e. purely combinatatioral circuit) and could easily be "plugged" in your FPGA design. For the *x^4+x+1* reduction polynomial, the Mastrovito matrix would look like the following.
+
+```vhld
+c(0) <= (b(0) and (a(0))) xor (b(1) and (a(3))) xor (b(2) and (a(2))) xor (b(3) and (a(1))) ; 
+c(1) <= (b(0) and (a(1))) xor (b(1) and (a(0) xor a(3))) xor (b(2) and (a(2) xor a(3))) xor (b(3) and (a(1) xor a(2))) ; 
+c(2) <= (b(0) and (a(2))) xor (b(1) and (a(1))) xor (b(2) and (a(0) xor a(3))) xor (b(3) and (a(2) xor a(3))) ; 
+c(3) <= (b(0) and (a(3))) xor (b(1) and (a(2))) xor (b(2) and (a(1))) xor (b(3) and (a(0) xor a(3))) ; 
+
+```
+
 ## Setup
 
 Copy the source files into your project folder and import the desired classes. For instance,
