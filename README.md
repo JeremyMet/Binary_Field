@@ -1,10 +1,10 @@
 # Binary_Field
 
 The project includes several classes.
-1. GF2 : Allows to perform polynomial/finite field arithmetics in characteristic 2.
-2. Binary_Matrix : Allows to perform matrix arithmetic in characteristic 2.
-3. Berlekamp : Allows to factorize binary polynomial thanks to the Berlekamp algorithm.
-4. Mastrovito : A FPGA Design Tool to generate Mastrovito Matrices.
+1. GF2: Allows to perform polynomial/finite field arithmetics in characteristic 2.
+2. Binary_Matrix: Allows to perform matrix arithmetic in characteristic 2.
+3. Berlekamp: Allows to factorize binary polynomial thanks to the Berlekamp algorithm.
+4. Mastrovito: A FPGA Design Tool to generate Mastrovito Matrices.
 
 
 ## GF2 Class
