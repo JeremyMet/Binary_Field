@@ -66,12 +66,8 @@ class Berlekamp():
 
         for i in range(mat.nb_rows):
             v_0 = mat.mat[i] ;
-            v_1 = list(v_0) ;
-            v_1[0] = v_1[0]^1 ;
             tmp_0 = GF2.gcd(F, Berlekamp.from_vec_to_pol(v_0));
-            tmp_1 = GF2.gcd(F, Berlekamp.from_vec_to_pol(v_1));
-            if tmp_0 != 1 and tmp_0 != F: return (GF2(F)/GF2(tmp_0), GF2(tmp_0)) ;
-            if tmp_1 != 1 and tmp_1 != F: return (GF2(F) / GF2(tmp_1), GF2(tmp_1));
+            if tmp_0 != 0 and tmp_0 != 1 and tmp_0 != F: return (GF2(F)//GF2(tmp_0), GF2(tmp_0)) ;
         return False ;
 
     @classmethod
@@ -99,7 +95,7 @@ class Berlekamp():
                     squares = Berlekamp.square_factors(GF2k) ;
                     if squares != GF2(1):
                         remain = True ;
-                        free_squares = GF2k/squares ;
+                        free_squares = GF2k//squares ;
                         if free_squares.val in ret:
                             ret[free_squares.val] += ret[k] ;
                         else:

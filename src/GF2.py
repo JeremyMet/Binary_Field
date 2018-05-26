@@ -72,7 +72,7 @@ class GF2(object):
                 u0, u1 = u1, u0 ;
         return GF2(GF2.reduce(u0)) ;
 
-    def __truediv__(self, other):
+    def __floordiv__(self, other):
         ret = 0 ;
         if not(other.val):
             raise("Div by zero.") ;
@@ -83,7 +83,14 @@ class GF2(object):
             ret = ret^(1<<tmp) ;
             a = a^(b<<tmp) ;
             deg_a = GF2.degree(a) ;
-        return GF2(ret) ;
+        ret = GF2(ret) ;
+        return ret ;
+
+    def __truediv__(self, other):
+        print(GF2.gcd(other.val, GF2.F)) ;
+        if GF2.gcd(other.val, GF2.F) != 1:
+            raise("Element is not invertible.")
+        return self*~other ;
 
     def __str__(self):
         ret = "" ;
@@ -174,8 +181,10 @@ class GF2(object):
             a = GF2.build_from_string(a) ;
         if type(b) == str:
             b = GF2.build_from_string(b);
+        if a == 0 or b == 0:
+            return 0 ;
         r0 = a ; r1 = b ;
-        while(r0 != 0 and r1 != 0):
+        while(r1!=0):
             tmp = GF2.degree(r0) - GF2.degree(r1);
             if tmp < 0:
                 r0, r1 = r1, r0;
@@ -205,17 +214,6 @@ if __name__ == "__main__":
     print(GF2.gcd("x^3+x^2+x+1", "x^3+x")) ;
 
 
-    ## Little Example with the Berlekamp Algorithm and Sympy
-
-    from sympy import * ;
-
-    # convert a binary vector [a_0, a_1 ... a_{n-1}] to the integer a_0+a_1*2+...+a_{n-1}*2^{n-1}
-    def from_vec_to_pol(vec):
-        ret = 0;
-        for i in range(len(vec)):
-            if (vec[i] % 2 != 0):
-                ret += 2 ** i;
-        return ret;
 
     ## By Setting the F to zero, one can perform polynomial operations
 
@@ -225,7 +223,7 @@ if __name__ == "__main__":
     print("(a*b)%(x^2+x+1): "+str((a*b)%GF2("x^2+x+1"))) ;
     print("x^10%(x^3+1): "+str(GF2("x^10")%GF2("x^3+1"))) ;
 
-    print(GF2("x^5+x+1")/GF2("x^3+1")) ;
+    print(GF2("x^5+x+1")//GF2("x^3+1")) ;
     print(GF2("x^5+x+1") % GF2("x^3+1"));
 
     c = GF2("x^7+x^5+x^4+x^3+x^2+1") ;
@@ -234,5 +232,9 @@ if __name__ == "__main__":
     print(" a == a ? :"+str(a==a)) ;
     print(" a != a ? :" + str(a != a));
 
-    # print(GF2("x+1")/GF2("0")) ;
+    GF2.set_polynomial("x^4+x+1") ;
+
+
+    print(GF2(GF2.gcd("x^6+x^5+x^4+x^2+x+1", "x^5+x^4+x^2+x"))) ;
+    print(GF2(GF2.gcd("x^3+x","x^3+x+1")));
 
