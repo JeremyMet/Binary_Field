@@ -4,6 +4,7 @@
 # Date : 20/02/2018
 
 import copy ;
+from ParsingTree import ParsingTree ;
 
 class GF2(object):
 
@@ -18,7 +19,7 @@ class GF2(object):
         self.deg = GF2.degree(self.val) ;
 
     def __add__(self, other):
-        return GF2(self.val ^ other) ;
+        return GF2(self.val ^ other.val) ;
 
     def __eq__(self, other):
         return self.val == other.val ;
@@ -137,16 +138,20 @@ class GF2(object):
     @classmethod
     def build_from_string(cls, s):
         ret = 0 ;
-        s = s.split("+") ;
-        for c in s:
-            if '^' in c:
-                c = c.split("^") ;
-                ret+= 2**int(c[1]) ;
-            else:
-                if c == '1':
-                    ret += 1 ;
-                elif c == 'x':
-                    ret+= 2 ;
+        if "(" in s or "*" in s or "/" in s:
+            tmp_tree = ParsingTree(s) ;
+            ret = tmp_tree.eval(GF2).val ;
+        else:
+            s = s.split("+") ;
+            for c in s:
+                if '^' in c:
+                    c = c.split("^") ;
+                    ret+= 2**int(c[1]) ;
+                else:
+                    if c == '1':
+                        ret += 1 ;
+                    elif c == 'x':
+                        ret+= 2 ;
         return ret ;
 
     @classmethod
@@ -204,7 +209,7 @@ if __name__ == "__main__":
     ## Set Finite Field Polynomial (for reduction)
     print("- Product of the finite field defined by x^3+x+1")
     GF2.set_polynomial("x^3+x+1") ;
-    a = GF2("x+1") ;
+    a = GF2("(x+1)*x+x/x") ;
     b = a*a ;
     print("a: "+str(a)) ;
     print("b: "+str(b)) ;
