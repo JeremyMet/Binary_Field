@@ -1,9 +1,10 @@
 # Binary_Field
 
 The project includes several classes.
-1. GF2 : Allows to perform polynomial/finite field arithmetics in characteristic 2.
-2. Binary_Matrix : Allows to perform matrix arithmetic in characteristic 2.
-3. Berlekamp : Allows to factorize binary polynomial thanks to the Berlekamp algorithm.
+1. GF2: Allows to perform polynomial/finite field arithmetics in characteristic 2.
+2. Binary_Matrix: Allows to perform matrix arithmetic in characteristic 2.
+3. Berlekamp: Allows to factorize binary polynomial thanks to the Berlekamp algorithm.
+4. Mastrovito: A FPGA Design Tool to generate Mastrovito Matrices.
 
 
 ## GF2 Class
@@ -88,6 +89,18 @@ print(" Factorisation ...") ;
 for k, v in prod.items():
   print("(key: "+str(GF2(k))+", pow: "+str(v)+")") ;
 ```
+## Mastrovito Class (FPGA Design Tool)
+
+For now, this class allows to generate a *.vhd* file which matches the Mastrovito Matrix structure one would generate for its FPGA design. This matrix is used to perform a finite field multiplication in one clock cycle (i.e. pure combinatatioral circuit) and could easily be "plugged" in your FPGA architecture. For the *x^4+x+1* reduction polynomial, the Mastrovito matrix would look like the following.
+
+```vhld
+c(0) <= (b(0) and (a(0))) xor (b(1) and (a(3))) xor (b(2) and (a(2))) xor (b(3) and (a(1))) ; 
+c(1) <= (b(0) and (a(1))) xor (b(1) and (a(0) xor a(3))) xor (b(2) and (a(2) xor a(3))) xor (b(3) and (a(1) xor a(2))) ; 
+c(2) <= (b(0) and (a(2))) xor (b(1) and (a(1))) xor (b(2) and (a(0) xor a(3))) xor (b(3) and (a(2) xor a(3))) ; 
+c(3) <= (b(0) and (a(3))) xor (b(1) and (a(2))) xor (b(2) and (a(1))) xor (b(3) and (a(0) xor a(3))) ; 
+
+```
+
 ## Setup
 
 Copy the source files into your project folder and import the desired classes. For instance,
