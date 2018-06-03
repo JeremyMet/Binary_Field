@@ -29,7 +29,10 @@ c = a*b ; # (x+1)*(x^2) mod (x^3+x+1) = (x^3+x^2) mod (x^3+x+1) = x^2+x+1
 should provide the correct output.
 
 Moreover, setting the __F__ to 0 allows the user to perform calculations over the polynomial ring (mod 2).
-Note the constructor should be provided "expanded form" of polynomial since there is no algorithm to carry out more complex input (for instance, *GF2("(x+1)*(x+1)")* is not allowed, one should first define *A=GF2("x+1")* and then compute *A\*A*).
+~~Note the constructor should be provided "expanded form" of polynomial since there is no algorithm to carry out more complex input (for instance, *GF2("(x+1)*(x+1)")* is not allowed, one should first define *A=GF2("x+1")* and then compute *A\*A*)~~.
+
+Note it is now possible to build your GF2 object from any well formed string, i.e. in the form of product, sum, quotient of monomials, where monomials are written as *x^i*.
+
 
 Notice the difference between *A/B* and *A//B*. The former actually computes *A\*B^{-1}* if the inverse of B exists while the latter computes A/B interpreted as polynomials *(i.e. (x^3+x+1)//x == x^2+1)* .
 
