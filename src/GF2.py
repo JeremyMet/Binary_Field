@@ -208,7 +208,7 @@ class GF2(object):
 if __name__ == "__main__":
     ## Set Finite Field Polynomial (for reduction)
     print("- Product of the finite field defined by x^3+x+1")
-    GF2.set_polynomial("x^3+x+1") ;
+    GF2.set_polynomial("(x^2+1)*x+1") ;
     a = GF2("(x+1)*x+x/x") ;
     b = a*a ;
     print("a: "+str(a)) ;
