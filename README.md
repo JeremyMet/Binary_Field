@@ -1,3 +1,5 @@
+(to be transfered to /private)
+
 # Binary_Field
 
 The project includes several classes.
