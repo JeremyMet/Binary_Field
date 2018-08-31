@@ -1,4 +1,3 @@
-(to be transfered to /private)
 
 # Binary_Field
 
