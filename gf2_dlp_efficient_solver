@@ -1,0 +1,18 @@
+\documentclass{article}
+
+
+\usepackage[latin1]{inputenc}     %% adapte le style article aux conventions francophones
+\usepackage[T1]{fontenc}          %% permet d'utiliser les caractères accentués
+
+\usepackage{amssymb}
+
+\begin{document}
+	
+	
+	We want to determine $s$ such that $V=\alpha^s$ in $\mathbb{F}_{2^m}$
+	\begin{itemize}
+		\item{First, define the minimal polynomial of $V$, $\mathcal{M}(V)=0$ with $\mathcal{M}$ being irreducible (e.g Caylay-Hamilton theorem),}
+		\item{We will then try to find $t$ such that $V^t=g$, i.e. $s \times t = 1 \pmod{2^m-1}$. In some cases, it won't be possible, i.e. $\textnormal{gcd}(s, 2-1) \neq $ but let us assume first that $t$ does exist. To do so, we will compute the following polynomial $P(X)=(X+g) \times (VX+g) \times (V^2X+g) \times \ldots \times (V^{2^{m-1}}X+g)$. This can be done efficiently with the following relationship $P_{i+1}(X) \leftarrow P_i(X) \times P_i(V^{2^i}\times A)$. It can be observed that the degree of $P_i$ will be doubled at every step, so we will reduce $P_i$ modulo $\mathcal{M}$. It can be proved that $P_i() }
+	\end{itemize}
+	
+\end{document}
